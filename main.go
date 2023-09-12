@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 
@@ -10,7 +9,8 @@ import (
 
 	"stagaTwoCrud/stageTwoHandlers"
 
-	"github.com/go-chi/docgen"
+	//"github.com/go-chi/docgen"
+	// "fmt"
 )
 
 func main() {
