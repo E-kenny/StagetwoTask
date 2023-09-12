@@ -39,11 +39,11 @@ func main() {
 
 	
 		// fmt.Println(docgen.JSONRoutesDoc(r))
-		fmt.Println(docgen.MarkdownRoutesDoc(r, docgen.MarkdownOpts{
-			ProjectPath: "github.com/E-kenny/StagetwoTask",
-			Intro:       "Welcome to the task two/rest generated docs.",
-		}))
-		return
+		// fmt.Println(docgen.MarkdownRoutesDoc(r, docgen.MarkdownOpts{
+		// 	ProjectPath: "github.com/E-kenny/StagetwoTask",
+		// 	Intro:       "Welcome to the task two/rest generated docs.",
+		// }))
+		// return
 	
 
 	http.ListenAndServe(":3333", r)
