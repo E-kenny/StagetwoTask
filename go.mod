@@ -1,10 +1,9 @@
 module stagaTwoCrud
 
-go 1.21.1
+go 1.20
 
 require (
 	github.com/go-chi/chi/v5 v5.0.10
-	github.com/go-chi/docgen v1.2.0
 	github.com/go-chi/render v1.0.3
 	github.com/jackc/pgx/v4 v4.18.1
 )
