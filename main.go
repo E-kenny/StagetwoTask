@@ -1,14 +1,16 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 
-	//"github.com/go-chi/docgen"
 	"stagaTwoCrud/stageTwoHandlers"
+
+	"github.com/go-chi/docgen"
 )
 
 func main() {
@@ -23,19 +25,26 @@ func main() {
 
 	// RESTy routes for "persons" resource
 	r.Route("/api", func(r chi.Router) {
-		r.With(stageTwoHandlers.Paginate).Get("/", stageTwoHandlers.Listpersons) // GET /persons
-		r.Post("/", stageTwoHandlers.Createperson)       // POST /persons
+		r.With(stageTwoHandlers.Paginate).Get("/", stageTwoHandlers.Listpersons)
+		r.Post("/", stageTwoHandlers.Createperson)  
 
 		r.Route("/{param}", func(r chi.Router) {
-			r.Use(stageTwoHandlers.PersonCtx)            // Load the *person on the request context
-			r.Get("/", stageTwoHandlers.Getperson)       // GET /persons/123
-			r.Put("/", stageTwoHandlers.Updateperson)    // PUT /persons/123
-			r.Delete("/", stageTwoHandlers.Deleteperson) // DELETE /persons/123
+			r.Use(stageTwoHandlers.PersonCtx)      
+			r.Get("/", stageTwoHandlers.Getperson)   
+			r.Put("/", stageTwoHandlers.Updateperson)    
+			r.Delete("/", stageTwoHandlers.Deleteperson) 
 		})
 
-		// GET /persons/whats-up
-		r.With(stageTwoHandlers.PersonCtx).Get("/{personSlug:[a-z-]+}", stageTwoHandlers.Getperson)
 	})
+
+	
+		// fmt.Println(docgen.JSONRoutesDoc(r))
+		fmt.Println(docgen.MarkdownRoutesDoc(r, docgen.MarkdownOpts{
+			ProjectPath: "github.com/E-kenny/StagetwoTask",
+			Intro:       "Welcome to the task two/rest generated docs.",
+		}))
+		return
+	
 
 	http.ListenAndServe(":3333", r)
 }
