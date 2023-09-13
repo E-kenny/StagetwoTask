@@ -28,7 +28,7 @@ func main() {
 
 	var testTable = `
         CREATE TABLE IF NOT EXISTS TEST(
-                id TEXT
+                id TEXT,
 				name TEXT
         )
   `
