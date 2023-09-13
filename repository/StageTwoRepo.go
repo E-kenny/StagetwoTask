@@ -47,8 +47,8 @@ func DbNewperson(person *Person) (string, error) {
 
 	person.ID = fmt.Sprintf("%d", rand.Intn(10000000)+10)
 	
-	_, err = conn.Exec(context.Background(), "insert into persons(Id, Name) values($1, $2) ", person.ID, person.Name)
-	fmt.Println(err)
+	_, err = conn.Exec(context.Background(), "insert into persons(id, name) values($1, $2) ", person.ID, person.Name)
+
 	if err != nil {
 		return "Can't save", err 
 	}

@@ -53,7 +53,12 @@ func Createperson(w http.ResponseWriter, r *http.Request) {
 	}
 
 	person := data.Person
-	repository.DbNewperson(person)
+	_ , err := repository.DbNewperson(person)
+
+	if err != nil {
+		render.Render(w, r, ErrInvalidRequest(err))
+		return
+	}
 
 	render.Status(r, http.StatusCreated)
 	render.Render(w, r, NewpersonResponse(person))
