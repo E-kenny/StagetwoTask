@@ -8,7 +8,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/jackc/pgx/v4"
+	"github.com/jackc/pgx"
 
 	"stagaTwoCrud/stageTwoHandlers"
 	//"github.com/go-chi/docgen"
