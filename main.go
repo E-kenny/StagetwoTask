@@ -16,9 +16,6 @@ import (
 )
 
 func main() {
-	// os.Setenv("DATABASE_URL", "postgres://postgres:E_kenny246810@localhost:5432/StageTwoDB")
-	os.Setenv("DATABASE_URL", "postgres://persons_414z_user:NXghusPlovh5g49DGkBx84LwrU4h5df2@dpg-ck0c3mj6fquc73ch4log-a/persons_414z")
-
 	conn, err := pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"))
 
 	if err != nil {
@@ -58,15 +55,6 @@ func main() {
 		})
 
 	})
-
-	
-		// fmt.Println(docgen.JSONRoutesDoc(r))
-		// fmt.Println(docgen.MarkdownRoutesDoc(r, docgen.MarkdownOpts{
-		// 	ProjectPath: "github.com/E-kenny/StagetwoTask",
-		// 	Intro:       "Welcome to the task two/rest generated docs.",
-		// }))
-		// return
-	
 
 	http.ListenAndServe(":3333", r)
 }
