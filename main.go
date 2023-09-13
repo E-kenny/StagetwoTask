@@ -1,69 +1,36 @@
 package main
 
 import (
-	//"context"
+	"context"
 	"fmt"
 	"net/http"
 	"os"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	//"github.com/jackc/pgx/v4"
+	"github.com/jackc/pgx/v4"
 
 	"stagaTwoCrud/stageTwoHandlers"
-	"github.com/jackc/pgx/v4/pgxpool"
-	_ "github.com/lib/pq"
-    "database/sql"
 	//"github.com/go-chi/docgen"
 	// "fmt"
 )
 
-var connGLOBAL *pgxpool.Pool
-
 func main() {
-	os.Setenv("DATABASE_URL", "postgres://postgres:E_kenny246810@localhost:5432/StageTwoDB")
-	// os.Setenv("DATABASE_URL", "postgres://persons_414z_user:NXghusPlovh5g49DGkBx84LwrU4h5df2@dpg-ck0c3mj6fquc73ch4log-a.oregon-postgres.render.com/persons_414z")
+	// os.Setenv("DATABASE_URL", "postgres://postgres:E_kenny246810@localhost:5432/StageTwoDB")
+	os.Setenv("DATABASE_URL", "postgres://persons_414z_user:NXghusPlovh5g49DGkBx84LwrU4h5df2@dpg-ck0c3mj6fquc73ch4log-a.oregon-postgres.render.com/persons_414z")
 
-	// conn, err := pgxpool.Connect(context.Background(), os.Getenv("DATABASE_URL"))
+	conn, err := pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"))
 
-	// if err != nil {
-	// 	fmt.Fprintf(os.Stderr, "Unable to connection to database: %v\n", err)
-	// 	os.Exit(1)
-	// }
-	
-	// _, err = conn.Exec(context.Background(), "create table personNew $1, $2", "id", "name")
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Unable to connection to database: %v\n", err)
+		os.Exit(1)
+	}
 
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-    "password=%s dbname=%s sslmode=disable",
-    "dpg-ck0c3mj6fquc73ch4log-a", 5432, "persons_414z_user", "NXghusPlovh5g49DGkBx84LwrU4h5df2", "persons_414z")
+	_, err = conn.Exec(context.Background(), "create table persons ($1,	$2)", "id", "name")
 
-  db, err := sql.Open("postgres", psqlInfo)
-
-  if err != nil {
-    panic(err)
-  }
-
-  err = db.Ping()
-
-  if err != nil {
-    panic(err)
-  }
-
-
-  defer db.Close()
-  fmt.Println("Successfully connected!")
-  var testTable = `
-        CREATE TABLE IF NOT EXISTS persons(
-                id Text
-				name Text
-        )
-  `
-  dbret, _ := db.Exec(testTable)
-  fmt.Printf("value of db %v", dbret)
-  
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	r := chi.NewRouter()
 
