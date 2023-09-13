@@ -1,14 +1,14 @@
 # github.com/E-kenny/StagetwoTask
-Welcome to the task two/rest generated docs.
+* Welcome to the task two/rest generated docs.
 
-### Clone the main branch
-### Set the environment variable to connection string of a postgres database e.g DATABASE_URL = postgres://postgres:E_kenny246810@localhost:5432/StageTwoDB
+- Clone the main branch
+- Set the environment variable to connection string of a postgres database e.g DATABASE_URL = postgres://postgres:E_kenny246810@localhost:5432/StageTwoDB
 
 ## Host URL
 - [https://stagetwotask.onrender.com/api](https://stagetwotask.onrender.com/api)
 
 ## Postman Documentation
-- [Doc](https://documenter.getpostman.com/view/11374327/2s9YC32Zfu)
+- [Documentation](https://documenter.getpostman.com/view/11374327/2s9YC32Zfu)
 
 
 ## Routes
