@@ -2,7 +2,9 @@
 * Welcome to the task two/rest generated docs.
 
 - Clone the main branch
+- Cd into the project directory
 - Set the environment variable to connection string of a postgres database e.g DATABASE_URL = postgres://postgres:E_kenny246810@localhost:5432/StageTwoDB
+- go run main.go 
 
 ## Host URL
 - [https://stagetwotask.onrender.com/api](https://stagetwotask.onrender.com/api)
