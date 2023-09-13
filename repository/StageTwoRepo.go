@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
-	"github.com/jackc/pgx/v4"
+	"github.com/jackc/pgx/v5"
 )
 
 

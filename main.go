@@ -8,7 +8,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/jackc/pgx"
+	"github.com/jackc/pgx/v5"
 
 	"stagaTwoCrud/stageTwoHandlers"
 	//"github.com/go-chi/docgen"
@@ -26,7 +26,13 @@ func main() {
 		os.Exit(1)
 	}
 
-	_, err = conn.Exec(context.Background(), "create table persons ($1,	$2)", "id", "name")
+	var testTable = `
+        CREATE TABLE IF NOT EXISTS TEST(
+                id TEXT
+				name TEXT
+        )
+  `
+	_, err = conn.Exec(context.Background(), testTable)
 
 	if err != nil {
 		fmt.Println(err)
