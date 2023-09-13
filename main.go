@@ -38,7 +38,7 @@ func main() {
 	// }
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
     "password=%s dbname=%s sslmode=disable",
-    "https://dashboard.render.com/d/dpg-ck0c3mj6fquc73ch4log-a", 5432, "persons_414z_user", "persons_414z_user", "persons_414z")
+    "dpg-ck0c3mj6fquc73ch4log-a", 5432, "persons_414z_user", "persons_414z_user", "persons_414z")
 
   db, err := sql.Open("postgres", psqlInfo)
 
